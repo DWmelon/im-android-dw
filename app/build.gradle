@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion ANDROID_BUILD_SDK_VERSION as int
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "melon.im"
+        minSdkVersion ANDROID_BUILD_MIN_SDK_VERSION as int //espresso and uiautomator 必须必须在api 18以上 发布版本时要修改为15
+        targetSdkVersion ANDROID_BUILD_TARGET_SDK_VERSION as int
+        versionCode ANDROID_CODE as int
+        versionName ANDROID_NAME
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : "melon.im",
+                JPUSH_APPKEY : "ec8f3e299ce973c671d12be2", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(":volley")
+
+    compile 'com.alibaba:fastjson:1.2.23'
+    compile 'com.android.support:design:24.2.0'
+    compile 'com.facebook.fresco:fresco:0.6.0'
+
+    compile 'cn.jiguang.sdk:jmessage:2.3.0'  // 此处以JMessage 2.7.0 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.7'  // 此处以JCore 1.2.3 版本为例。
+}

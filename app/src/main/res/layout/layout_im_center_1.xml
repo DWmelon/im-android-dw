@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_15"
+    android:layout_marginRight="@dimen/margin_15"
+    android:layout_marginTop="@dimen/margin_10"
+    android:layout_marginBottom="@dimen/margin_30"
+    android:padding="@dimen/margin_15"
+    android:background="@drawable/bg_corner_white"
+    android:elevation="@dimen/margin_min">
+
+    <LinearLayout
+        android:id="@+id/ll_message_block_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_message_block_avatar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/icon_im_message_avatar"/>
+
+        <TextView
+            android:id="@+id/iv_message_block_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:textColor="@color/common_title_txt_color"
+            android:textSize="@dimen/sp_15"/>
+
+        <View
+            android:layout_width="0px"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_message_block_tag_ads"
+            android:layout_width="40dp"
+            android:layout_height="17dp"
+            android:text="@string/message_tag_ads"
+            android:textColor="@color/home_v7_gray_9"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:background="@drawable/bg_corner_im_text_ads"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_message_block_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_message_block_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        android:textSize="16sp"
+        android:textColor="@color/common_title_txt_color"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_message_block_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:textSize="13sp"
+        android:textColor="@color/home_v7_gray_2"
+        android:visibility="gone"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_half"
+        android:layout_marginTop="@dimen/margin_15"
+        android:background="@color/common_gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        android:gravity="center"
+        android:text="@string/message_see_detail"
+        android:textSize="13sp"
+        android:textColor="@color/common_title_txt_color"
+        android:drawableRight="@drawable/icon_arrow_right_black_message"
+        android:drawablePadding="@dimen/margin_5"/>
+
+</LinearLayout>

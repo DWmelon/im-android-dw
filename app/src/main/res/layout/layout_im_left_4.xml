@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp"
+    android:paddingLeft="@dimen/margin_15"
+    android:paddingRight="@dimen/margin_15"
+    android:gravity="top">
+
+
+    <ImageView
+        android:id="@+id/iv_im_logo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_im_session_left"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="45dp"
+        android:paddingLeft="@dimen/margin_15"
+        android:paddingRight="@dimen/margin_10"
+        android:paddingTop="@dimen/margin_10"
+        android:paddingBottom="@dimen/margin_10">
+
+        <TextView
+            android:id="@+id/tv_im_4_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/common_title_txt_color"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="18dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_im_4_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:orientation="horizontal"
+                android:background="@drawable/selector_common_bg_white_line_gray_blue"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_im_4_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:src="@drawable/selector_im_zan_yes"/>
+
+                <TextView
+                    android:id="@+id/tv_im_4_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="6dp"
+                    android:textColor="@drawable/selector_im_zan_text"
+                    android:textSize="12sp"
+                    android:text="@string/im_question_solve"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_im_4_no"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:orientation="horizontal"
+                android:background="@drawable/selector_common_bg_white_line_gray_blue"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_im_4_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:src="@drawable/selector_im_zan_no"/>
+
+                <TextView
+                    android:id="@+id/tv_im_4_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="6dp"
+                    android:textColor="@drawable/selector_im_zan_text"
+                    android:textSize="12sp"
+                    android:text="@string/im_question_unsolved"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_im_4_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@string/im_people_ask"
+            android:textColor="@color/common_sub_title_txt_color"
+            android:textSize="13sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_im_4_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

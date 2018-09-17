@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_im_layout">
+
+    <melon.im.im.ImRecyclerView
+        android:id="@+id/rv_im_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_bg"
+        android:layout_above="@+id/ll_im_input_layout"/>
+
+    <LinearLayout
+        android:id="@+id/ll_im_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/margin_50"
+        android:paddingLeft="@dimen/margin_15"
+        android:paddingRight="@dimen/margin_15"
+        android:paddingBottom="@dimen/margin_10"
+        android:paddingTop="@dimen/margin_10"
+        android:orientation="horizontal"
+
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/et_im_input"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/margin_30"
+            android:paddingLeft="@dimen/margin_10"
+            android:paddingTop="@dimen/margin_5"
+            android:paddingBottom="@dimen/margin_5"
+            android:paddingRight="@dimen/margin_10"
+            android:hint="@string/im_input_tip"
+            android:textColorHint="@color/common_sub_title_txt_color"
+            android:textSize="@dimen/sp_15"
+            android:textColor="@color/common_content_txt_color"
+            android:background="@drawable/bg_corner_im_input" />
+
+        <TextView
+            android:id="@+id/tv_im_me_send"
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:background="@drawable/bg_corner_blue"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:text="@string/im_send"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="primary_color">#2C88FA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="common_bg">#F5F5F5</color>
+
+    <!-- v7首页 -->
+    <color name="home_v7_sch_bg">#EFFFF1</color>
+    <color name="home_v7_sch_block">#DCF9E2</color>
+    DCF9E2
+    <color name="home_v7_major_bg">#FFF7E6</color>
+    <color name="home_v7_major_block">#FFF0D5</color>
+
+    <color name="home_v7_zy_bg">#EDF6FF</color>
+    <color name="home_v7_zy_block">#E3EFFF</color>
+    <color name="home_v7_zy_item">#E2EFFF</color>
+
+    <!-- home 7 -->
+    <color name="home_v7_divide_line">#E5E5E5</color>
+    <color name="home_v7_black_dark">#1E1E1E</color>
+    <color name="home_v7_black">#444444</color>
+    <color name="home_v7_black_tab">#4C5261</color>
+
+    <color name="home_v7_gray">#6C737B</color>
+    <color name="home_v7_gray_2">#969696</color>
+    <color name="home_v7_gray_3">#F1F1F1</color>
+    <color name="home_v7_gray_4">#F5F5F5</color>
+    <color name="home_v7_gray_5">#C9C9C9</color>
+    <color name="home_v7_gray_6">#DFDFDF</color>
+    <color name="home_v7_gray_7">#DDDDDD</color>
+    <color name="home_v7_gray_8">#C7C7CC</color>
+    <color name="home_v7_gray_9">#979797</color>
+
+    <color name="home_v7_gray_tab">#97A0AA</color>
+
+    <color name="home_v7_yellow">#F98F01</color>
+    <color name="home_v7_red">#FF4C62</color>
+    <color name="home_v7_green">#3FBB68</color>
+
+    <color name="home_v7_blue">#2C88FA</color>
+    <color name="home_v7_line_1">#CCCCCC</color>
+    <color name="home_v7_line_2">#F0F0F0</color>
+    <color name="home_v7_line_3">#ECECEC</color>
+
+
+    <color name="home_v7_black_2">#646464</color>
+    <color name="home_v7_black_3">#6B6B6B</color>
+
+    <color name="home_v7_msg_red">#FE3535</color>
+
+    <color name="common_title_txt_color">#1E1E1E</color>
+    <color name="common_sub_title_txt_color">#C9C9C9</color>
+    <color name="common_content_txt_color">#646464</color>
+    <color name="common_gray">#E0E0E0</color>
+
+    <color name="common_blue_light">#99C7FF</color>
+    <color name="common_blue">#2C88FA</color>
+    <color name="common_blue_dark">#0D71EC</color>
+
+</resources>

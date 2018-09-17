@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Im</string>
+
+    <string name="default_time_format">MM月dd日 HH:mm</string>
+
+    <string name="im_send">发送</string>
+    <string name="im_input_tip">请在此输入你的问题</string>
+    <string name="im_people_ask">大家都在问：</string>
+    <string name="im_question_solve">已解决</string>
+    <string name="im_question_unsolved">未解决</string>
+    <string name="im_question_similar_1">为你找到以下相关问题：</string>
+    <string name="im_question_similar_2">为你找到一条相似问题：</string>
+    <string name="im_question_similar_3">相关问题</string>
+    <string name="im_submit_question">去留言板提问</string>
+    <string name="im_have_not_answer">（╯﹏╰）答不上，不如去留言板寻找答案。</string>
+    <string name="im_which_prov_exam">请问你在哪个省份参加高考？</string>
+    <string name="im_choose_course_1">请选择科目：</string>
+    <string name="im_choose_course_2">请选择选考科目：</string>
+    <string name="im_admit_major">当前选科组合可填报以下专业\n请选择专业：</string>
+    <string name="message_tag_ads">广告</string>
+    <string name="message_see_detail">查看详情</string>
+    <string name="message_time_format1">%1$d:%2$d</string>
+    <string name="message_time_format2">%1$d月%2$d日</string>
+    <string name="message_hd_title_hf_1">%1$s回复了你的帖子&#160;%2$s</string>
+    <string name="message_hd_title_hf_2">你在&#160;%1$s&#160;中的提问&#160;%2$s&#160;已有老师回复</string>
+    <string name="message_hd_title_dz_1">%1$s赞了你的帖子&#160;%2$s</string>
+    <string name="message_hd_title_dz_2">%1$s赞了你的帖子&#160;%2$s&#160;中的评论&#160;"%3$s"</string>
+
+    <string name="default_have_not_data_1">暂无内容</string>
+    <string name="default_have_not_data_2">猜你喜欢以下高校，关注后及时订阅高校公告</string>
+
+</resources>
