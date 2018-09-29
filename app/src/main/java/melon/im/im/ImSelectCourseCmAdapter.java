@@ -7,26 +7,29 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 import melon.im.R;
+
 
 public class ImSelectCourseCmAdapter extends BaseAdapter {
 
     private Context mContext;
-    private String[] dataList;
+    private List<String> dataList;
 
-    public ImSelectCourseCmAdapter(Context context){
-        mContext = context;
-        dataList = context.getResources().getStringArray(R.array.common_course);
+    public ImSelectCourseCmAdapter(Context context, List<String> dataList){
+        this.mContext = context;
+        this.dataList = dataList;
     }
 
     @Override
     public int getCount() {
-        return dataList.length;
+        return dataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return dataList[position];
+        return dataList.get(position);
     }
 
     @Override
@@ -41,7 +44,7 @@ public class ImSelectCourseCmAdapter extends BaseAdapter {
         return tv;
     }
 
-    public String[] getDataList() {
+    public List<String> getDataList() {
         return dataList;
     }
 

@@ -16,7 +16,9 @@ public class ImRecyclerScrollListener extends RecyclerView.OnScrollListener {
     @Override
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
-
+        if (!((ImRecyclerView)recyclerView).isNeedLoad){
+            return;
+        }
 
         //停留在了头部，判断并执行相关操作
         if (newState == RecyclerView.SCROLL_STATE_IDLE && mLinearLayoutManager.findFirstVisibleItemPosition() == 0){
@@ -36,6 +38,10 @@ public class ImRecyclerScrollListener extends RecyclerView.OnScrollListener {
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
+        if (!((ImRecyclerView)recyclerView).isNeedLoad){
+            return;
+        }
+
         //在自由滑动过程中，触及头部，则回弹
         if (mLinearLayoutManager.findFirstVisibleItemPosition() == 0){
             if (recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_SETTLING){

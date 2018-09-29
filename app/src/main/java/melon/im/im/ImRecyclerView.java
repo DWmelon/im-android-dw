@@ -10,7 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 
 import melon.im.R;
 
-
 public class ImRecyclerView extends RecyclerView {
 
     /**

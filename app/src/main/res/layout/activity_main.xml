@@ -1,58 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/rl_im_layout">
-
-    <melon.im.im.ImRecyclerView
-        android:id="@+id/rv_im_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/common_bg"
-        android:layout_above="@+id/ll_im_input_layout"/>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/ll_im_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/margin_50"
-        android:paddingLeft="@dimen/margin_15"
-        android:paddingRight="@dimen/margin_15"
-        android:paddingBottom="@dimen/margin_10"
-        android:paddingTop="@dimen/margin_10"
-        android:orientation="horizontal"
-
-        android:layout_alignParentBottom="true">
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center">
 
         <EditText
-            android:id="@+id/et_im_input"
-            android:layout_width="0px"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/margin_30"
-            android:paddingLeft="@dimen/margin_10"
-            android:paddingTop="@dimen/margin_5"
-            android:paddingBottom="@dimen/margin_5"
-            android:paddingRight="@dimen/margin_10"
-            android:hint="@string/im_input_tip"
-            android:textColorHint="@color/common_sub_title_txt_color"
-            android:textSize="@dimen/sp_15"
-            android:textColor="@color/common_content_txt_color"
-            android:background="@drawable/bg_corner_im_input" />
+            android:id="@+id/et_my_account"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:hint="输入自己的账号"/>
 
         <TextView
-            android:id="@+id/tv_im_me_send"
-            android:layout_width="@dimen/margin_60"
-            android:layout_height="@dimen/margin_30"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:background="@drawable/bg_corner_blue"
-            android:gravity="center"
-            android:layout_gravity="bottom"
-            android:text="@string/im_send"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_15"/>
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="@dimen/margin_5"
+            android:textColor="@color/home_v7_gray_9"
+            android:textSize="14sp"
+            android:text="自己账号不存在则会自动注册"/>
+
+
+        <EditText
+            android:id="@+id/et_target_uid"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="@dimen/margin_20"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:hint="输入对话用户的账号"/>
+
+        <Button
+            android:id="@+id/bt_uid"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/margin_20"
+            android:text="进入会话"
+            android:textSize="14sp"/>
 
     </LinearLayout>
+
 
 
 </RelativeLayout>

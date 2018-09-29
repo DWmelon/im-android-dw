@@ -17,6 +17,7 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpStack;
 import com.android.volley.toolbox.InputStreamImageRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.File;
@@ -41,11 +42,11 @@ public class HttpRequestManager implements IRequest {
         this.mRequestQueue = Volley.newRequestQueue(this.mContext, (HttpStack) null, strCacheDir);
     }
 
-    private com.android.volley.toolbox.StringRequest requestForString(String url, int method, final boolean isShowToast, final IRequestCallback callback, boolean cache) {
+    private StringRequest requestForString(String url, int method, final boolean isShowToast, final IRequestCallback callback, boolean cache) {
 
 
         final String finalUrl = url;
-        MyStringRequest request = new MyStringRequest(method, url, new Response.Listener<String>() {
+        MelonStringRequest request = new MelonStringRequest(method, url, new Response.Listener<String>() {
             public void onResponse(String response) {
 
                 if (callback != null) {
@@ -169,7 +170,7 @@ public class HttpRequestManager implements IRequest {
         return (Request) request;
     }
 
-    private void doAddQueue(com.android.volley.toolbox.StringRequest request, CacheDir dir) {
+    private void doAddQueue(StringRequest request, CacheDir dir) {
         this.mRequestQueue.add(request);
     }
 
@@ -215,7 +216,8 @@ public class HttpRequestManager implements IRequest {
     }
 
     public void sendRequestForGetWithJson(String url, Map<String, String> param, boolean isShowToast, IRequestCallback callback, boolean cache, String token) {
-        this.doAddQueue(this.requestForJson(url, 0, isShowToast, callback, cache, token));
+        String tagertUrl = ApiParamUtil.wrappeUrlParam(url, param);
+        this.doAddQueue(this.requestForJson(tagertUrl, 0, isShowToast, callback, cache, token));
     }
 
     public void sendRequestForPost(String url, Map<String, String> param, IRequestCallback callback) {
@@ -238,11 +240,11 @@ public class HttpRequestManager implements IRequest {
         this.doAddQueue(request);
     }
 
-    private com.android.volley.toolbox.StringRequest requestForPost(String url, final Map<String, String> param, final boolean isShowToast, final IRequestCallback callback) {
+    private StringRequest requestForPost(String url, final Map<String, String> param, final boolean isShowToast, final IRequestCallback callback) {
 
 
         final String finalUrl = url;
-        com.android.volley.toolbox.StringRequest request = new com.android.volley.toolbox.StringRequest(1, url, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(1, url, new Response.Listener<String>() {
             public void onResponse(String response) {
 
                 if (callback != null) {
@@ -294,6 +296,8 @@ public class HttpRequestManager implements IRequest {
 
         final String finalUrl = url;
 
+        final Map wrappMap = ApiParamUtil.wrappeBaseParam(param);
+
         StringRequestJsonResult request = new StringRequestJsonResult(1,url, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
 
@@ -333,7 +337,7 @@ public class HttpRequestManager implements IRequest {
             }
         }) {
             protected Map<String, String> getParams() throws AuthFailureError {
-                return param;
+                return wrappMap;
             }
         };
         request.setShouldCache(false);

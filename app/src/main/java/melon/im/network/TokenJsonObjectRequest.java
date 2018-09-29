@@ -9,7 +9,7 @@ import com.android.volley.Response;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TokenJsonObjectRequest extends JsonObjectRequest {
+public class TokenJsonObjectRequest extends MelonJsonObjectRequest {
 
     private String mToken;
 

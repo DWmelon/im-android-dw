@@ -8,16 +8,34 @@ import java.util.List;
 public class ImModel implements Serializable {
 
     private static final long serialVersionUID = -7241066030663820788L;
+    private String questionId;
     private int type;
-    private String logo;
+    private int logo;
     private String name;
-    private String content;
+    private String content = "";
     private String detail;
+    private String originQuestion;
     private String imgUrl;
     private boolean isAds;
     private boolean isMe;
     private long time;
     private List<String> infoList = new ArrayList<>();
+
+    public String getOriginQuestion() {
+        return originQuestion;
+    }
+
+    public void setOriginQuestion(String originQuestion) {
+        this.originQuestion = originQuestion;
+    }
+
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
+    }
 
     public String getName() {
         return name;
@@ -67,11 +85,11 @@ public class ImModel implements Serializable {
         this.time = time;
     }
 
-    public String getLogo() {
+    public int getLogo() {
         return logo;
     }
 
-    public void setLogo(String logo) {
+    public void setLogo(int logo) {
         this.logo = logo;
     }
 

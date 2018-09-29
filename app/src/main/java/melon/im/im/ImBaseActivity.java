@@ -11,28 +11,26 @@ import android.text.TextUtils;
 import java.io.Serializable;
 import java.util.Date;
 
-import static melon.im.base.Constant.ACTION_IM;
-import static melon.im.base.Constant.IM_MODEL;
+import melon.im.UrlConstantV2;
 
 
-public abstract class BaseImActivity extends Activity {
+public abstract class ImBaseActivity extends Activity {
 
     private class ImReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent == null || !TextUtils.equals(intent.getAction(), ACTION_IM)){
+            if (intent == null || !TextUtils.equals(intent.getAction(), UrlConstantV2.RECEIVER.ACTION_IM)){
                 return;
             }
             Bundle bundle = intent.getExtras();
             if (bundle == null){
                 return;
             }
-            Serializable serializable = bundle.getSerializable(IM_MODEL);
+            Serializable serializable = bundle.getSerializable(UrlConstantV2.BUNDLE.IM_MODEL);
             if (serializable == null){
                 return;
             }
             ImModel imModel = (ImModel)serializable;
-            imModel.setLogo("http://ww1.sinaimg.cn/large/71d1678cgw1elwrspnlicj20go0goq4a.jpg");
             imModel.setTime(new Date().getTime());
             handleAddMsg(imModel);
         }
@@ -45,7 +43,7 @@ public abstract class BaseImActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         imReceiver = new ImReceiver();
-        IntentFilter filter = new IntentFilter(ACTION_IM);
+        IntentFilter filter = new IntentFilter(UrlConstantV2.RECEIVER.ACTION_IM);
         registerReceiver(imReceiver,filter);
     }
 

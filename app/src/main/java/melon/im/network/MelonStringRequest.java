@@ -4,29 +4,30 @@ import android.text.TextUtils;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyStringRequest extends com.android.volley.toolbox.StringRequest {
+public class MelonStringRequest extends StringRequest {
 
     private String mToken;
 
-    public MyStringRequest(int method, String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+    public MelonStringRequest(int method, String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(method, url, listener, errorListener);
     }
 
-    public MyStringRequest(int method, String url, Response.Listener<String> listener, Response.ErrorListener errorListener, String token) {
+    public MelonStringRequest(int method, String url, Response.Listener<String> listener, Response.ErrorListener errorListener, String token) {
         super(method, url, listener, errorListener);
         this.mToken = token;
 
     }
 
-    public MyStringRequest(String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+    public MelonStringRequest(String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(url, listener, errorListener);
     }
 
-    public MyStringRequest(String url, Response.Listener<String> listener, Response.ErrorListener errorListener, String token) {
+    public MelonStringRequest(String url, Response.Listener<String> listener, Response.ErrorListener errorListener, String token) {
         super(url, listener, errorListener);
         this.mToken = token;
 

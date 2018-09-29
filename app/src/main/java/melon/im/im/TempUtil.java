@@ -6,7 +6,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static melon.im.base.Constant.*;
+import melon.im.UrlConstantV2;
+
+import static melon.im.UrlConstantV2.VALUE.TYPE_TIME;
 
 public class TempUtil {
 
@@ -17,91 +19,91 @@ public class TempUtil {
 
         model = new ImModel();
         model.setContent("测试15");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1536010329000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试14");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536020529000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试13");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1536030829000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试12");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1536040929000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试11");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536051029000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试10");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536091129000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试9");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1536111229000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试8");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536121329000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试7");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536141429000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试6");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1536151529000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试5");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536161629000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试4");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1536181729000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试3");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1536221759000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试2");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536241779000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试1");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1536291789000L);
         modelList.add(model);
         return modelList;
@@ -114,91 +116,91 @@ public class TempUtil {
 
         model = new ImModel();
         model.setContent("测试30");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535030529000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试29");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535050729000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试28");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1535060829000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试27");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1535070929000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试26");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535081029000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试25");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535091129000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试24");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1535111229000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试23");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535151329000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试22");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535211429000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试21");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1535221529000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试20");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535251629000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试19");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1535261729000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试18");
-        model.setType(IM_RIGHT_1);
+        model.setType(UrlConstantV2.VALUE.IM_RIGHT_1);
         model.setTime(1535271759000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试17");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535281779000L);
         modelList.add(model);
 
         model = new ImModel();
         model.setContent("测试16");
-        model.setType(IM_LEFT_1);
+        model.setType(UrlConstantV2.VALUE.IM_LEFT_1);
         model.setTime(1535291789000L);
         modelList.add(model);
         return modelList;

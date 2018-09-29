@@ -6,6 +6,7 @@
 
     <color name="primary_color">#2C88FA</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="common_bg">#F5F5F5</color>
 
     <!-- v7首页 -->

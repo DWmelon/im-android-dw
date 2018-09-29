@@ -1,4 +1,4 @@
-package melon.im.base;
+package melon.im;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -6,12 +6,10 @@ import android.text.TextUtils;
 import java.util.HashMap;
 
 import melon.im.im.ImManager;
-import melon.im.im.ReqManager;
 import melon.im.network.HttpRequestManager;
 import melon.im.network.IInterface;
 import melon.im.network.IRequest;
 import melon.im.network.StorageManager;
-
 
 /**
  * Created by melon on 2017/1/3.
@@ -62,7 +60,6 @@ public class MyClient {
 
     }
     private StorageManager storageManager;
-    private ReqManager reqManager;
     private ImManager imManager;
 
     public synchronized StorageManager getStorageManager(){
@@ -70,13 +67,6 @@ public class MyClient {
             storageManager = new StorageManager(context);
         }
         return storageManager;
-    }
-
-    public synchronized ReqManager getReqManager(){
-        if (reqManager == null){
-            reqManager = new ReqManager();
-        }
-        return reqManager;
     }
 
     public synchronized ImManager getImManager(){

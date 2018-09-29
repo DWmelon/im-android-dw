@@ -3,8 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="7dp"
-    android:paddingBottom="7dp"
+    android:paddingBottom="@dimen/margin_15"
     android:paddingLeft="@dimen/margin_15"
     android:paddingRight="@dimen/margin_15"
     android:gravity="top">

@@ -3,6 +3,8 @@
     android:id="@+id/tv_im_time"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_15"
+    android:layout_marginBottom="@dimen/margin_15"
     android:gravity="center"
     android:textSize="13sp"
     android:textColor="@color/home_v7_gray_2">

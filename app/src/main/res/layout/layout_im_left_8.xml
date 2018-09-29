@@ -3,8 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="7dp"
-    android:paddingBottom="7dp"
+    android:paddingBottom="@dimen/margin_15"
     android:paddingLeft="@dimen/margin_15"
     android:paddingRight="@dimen/margin_15"
     android:gravity="top">
@@ -29,6 +28,7 @@
         android:paddingBottom="@dimen/margin_10">
 
         <TextView
+            android:id="@+id/tv_im_left_8_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/im_choose_course_1"
@@ -36,7 +36,7 @@
             android:textSize="16sp"/>
 
         <GridView
-            android:id="@+id/gv_im_8_wl"
+            android:id="@+id/gv_im_8_choose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10"
@@ -44,6 +44,7 @@
             android:layout_marginLeft="@dimen/margin_5"
             android:layout_marginRight="@dimen/margin_5"
             android:horizontalSpacing="15dp"
+            android:verticalSpacing="@dimen/margin_10"
             android:scrollbars="none"
             android:numColumns="2" />
 

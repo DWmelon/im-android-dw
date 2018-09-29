@@ -23,10 +23,27 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
+import melon.im.MyClient;
 import melon.im.R;
-import melon.im.base.MyClient;
+import melon.im.UrlConstantV2;
+import melon.im.im.listener.OnImQuestionSolveListener;
+import melon.im.im.listener.OnImSelectListener;
 
-import static melon.im.base.Constant.*;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_1;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_10;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_11;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_2;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_3;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_4;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_5;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_6;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_7;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_8;
+import static melon.im.UrlConstantV2.VALUE.IM_LEFT_9;
+import static melon.im.UrlConstantV2.VALUE.IM_PUSH_MSG;
+import static melon.im.UrlConstantV2.VALUE.IM_RIGHT_1;
+import static melon.im.UrlConstantV2.VALUE.TYPE_HEADER;
+import static melon.im.UrlConstantV2.VALUE.TYPE_TIME;
 
 
 public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
@@ -46,8 +63,12 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
     private ImSelectProvAdapter mAdapterProv;
     private ImSelectCourseCmAdapter mAdapterWl;
     private ImSelectCourseZjAdapter mAdapterZj;
+    private ImSelectCourseCmAdapter mAdapterBatch;
 
     private boolean isHadHeader;
+
+    private OnImSelectListener onImSelectListener;
+    private OnImQuestionSolveListener onImQuestionSolveListener;
 
     public ImAdapter(Context context, RecyclerView mRvList, List<ImModel> list, boolean isHadHeader){
         this.mContext = context;
@@ -55,8 +76,15 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
         this.mDataList = list;
         this.isHadHeader = isHadHeader;
         this.mAdapterProv = new ImSelectProvAdapter(context);
-        this.mAdapterWl = new ImSelectCourseCmAdapter(context);
         this.mAdapterZj = new ImSelectCourseZjAdapter(context);
+    }
+
+    public void setOnImSelectListener(OnImSelectListener onImSelectListener) {
+        this.onImSelectListener = onImSelectListener;
+    }
+
+    public void setOnImQuestionSolveListener(OnImQuestionSolveListener onImQuestionSolveListener) {
+        this.onImQuestionSolveListener = onImQuestionSolveListener;
     }
 
     /**
@@ -65,7 +93,7 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
      */
     public void addImList(List<ImModel> modelList){
         mDataList.addAll(isHadHeader?1:0,modelList);
-        notifyItemRangeInserted(0,modelList.size());
+        notifyItemRangeInserted(isHadHeader?1:0,modelList.size());
     }
 
     /**
@@ -189,13 +217,18 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                 break;
             }
             case IM_LEFT_9:{
-                View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_left_9,parent,false);
+                View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_left_8,parent,false);
                 holder = new ViewHolderLeftNinth(view);
                 break;
             }
             case IM_LEFT_10:{
                 View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_left_10,parent,false);
                 holder = new ViewHolderLeftTenth(view);
+                break;
+            }
+            case IM_LEFT_11:{
+                View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_left_8,parent,false);
+                holder = new ViewHolderLeftEleventh(view);
                 break;
             }
             case IM_RIGHT_1:{
@@ -268,6 +301,10 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                 handleLeftTenth(holder,imModel);
                 break;
             }
+            case IM_LEFT_11:{
+                handleLeftEleventh(holder,imModel);
+                break;
+            }
             case IM_RIGHT_1:{
                 handleRight(holder,imModel);
                 break;
@@ -285,20 +322,21 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
         viewholder.mTvLeftOne.setText(imModel.getContent());
     }
 
-    private void handleLeftSecond(ViewHolder holder,ImModel imModel){
-        final String temp = "我能考上华南理工大学吗？";
+    private void handleLeftSecond(ViewHolder holder, final ImModel imModel){
         ViewHolderLeftSecond viewholder = (ViewHolderLeftSecond) holder;
         viewholder.mIvLogo.setImageResource(R.drawable.icon_im_robot);
         viewholder.mTvLeftContent.setText(imModel.getContent());
         viewholder.mLlLeftList.removeAllViews();
-        for (int i = 0;i < 3;i++){
+        for (int i = 0;i < imModel.getInfoList().size();i++){
             View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_select_text_question,viewholder.mLlLeftList,false);
             TextView tv = (TextView)view.findViewById(R.id.tv_im_select_text);
-            tv.setText(temp);
+            final String info = imModel.getInfoList().get(i);
+            tv.setText(info);
+            final int finalI = i;
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sendOwnMessage(temp);
+                    onImSelectListener.onImSelect(IM_LEFT_2, finalI,info);
                 }
             });
             viewholder.mLlLeftList.addView(view);
@@ -306,38 +344,38 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
     }
 
     private void handleLeftThird(ViewHolder holder,ImModel imModel){
-        final String temp = "我能考上华南理工大学吗？";
         ViewHolderLeftThird viewholder = (ViewHolderLeftThird) holder;
         viewholder.mIvLogo.setImageResource(R.drawable.icon_im_robot);
         viewholder.mLlLeftList.removeAllViews();
-        for (int i = 0;i < 3;i++){
+        for (int i = 0;i < imModel.getInfoList().size();i++){
             View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_select_text_question,viewholder.mLlLeftList,false);
             TextView tv = (TextView)view.findViewById(R.id.tv_im_select_text);
-            tv.setText(temp);
+            final String info = imModel.getInfoList().get(i);
+            tv.setText(info);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sendOwnMessage(temp);
+                    onImSelectListener.onImSelect(IM_LEFT_3,-1,info);
                 }
             });
             viewholder.mLlLeftList.addView(view);
         }
     }
 
-    private void handleLeftFourth(ViewHolder holder,ImModel imModel){
-        final String temp = "我能考上华南理工大学吗？";
+    private void handleLeftFourth(ViewHolder holder, final ImModel imModel){
         final ViewHolderLeftFourth viewholder = (ViewHolderLeftFourth) holder;
         viewholder.mIvLogo.setImageResource(R.drawable.icon_im_robot);
         viewholder.mTvLeftContent.setText(imModel.getContent());
         viewholder.mLlLeftList.removeAllViews();
-        for (int i = 0;i < 3;i++){
+        for (int i = 0;i < imModel.getInfoList().size();i++){
             View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_select_text_question,viewholder.mLlLeftList,false);
             TextView tv = (TextView)view.findViewById(R.id.tv_im_select_text);
-            tv.setText(temp);
+            final String info = imModel.getInfoList().get(i);
+            tv.setText(info);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sendOwnMessage(temp);
+                    onImSelectListener.onImSelect(IM_LEFT_4,-1,info);
                 }
             });
             viewholder.mLlLeftList.addView(view);
@@ -352,6 +390,7 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                     viewholder.mTvYes.setSelected(true);
                     viewholder.mLlYes.setSelected(true);
                     // TODO: 2018/9/13 标记已解决
+                    onImQuestionSolveListener.onImQuestionSolve(imModel.getQuestionId(),imModel.getOriginQuestion(),true);
                 }
             }
         });
@@ -365,26 +404,27 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                     viewholder.mTvNo.setSelected(true);
                     viewholder.mLlNo.setSelected(true);
                     // TODO: 2018/9/13 标记未解决
+                    onImQuestionSolveListener.onImQuestionSolve(imModel.getQuestionId(),imModel.getOriginQuestion(),false);
                 }
             }
         });
     }
 
-    private void handleLeftFifth(ViewHolder holder,ImModel imModel){
-        final String temp = "我能考上华南理工大学吗？";
+    private void handleLeftFifth(ViewHolder holder, final ImModel imModel){
         final ViewHolderLeftFifth viewholder = (ViewHolderLeftFifth) holder;
         viewholder.mIvLogo.setImageResource(R.drawable.icon_im_robot);
         viewholder.mTvLeftQuestion.setText(imModel.getContent().split("/")[0]);
         viewholder.mTvLeftAnswer.setText(imModel.getContent().split("/")[1]);
         viewholder.mLlLeftList.removeAllViews();
-        for (int i = 0;i < 3;i++){
+        for (int i = 0;i < imModel.getInfoList().size();i++){
             View view = LayoutInflater.from(mContext).inflate(R.layout.layout_im_select_text_question,viewholder.mLlLeftList,false);
             TextView tv = (TextView)view.findViewById(R.id.tv_im_select_text);
-            tv.setText(temp);
+            final String info = imModel.getInfoList().get(i);
+            tv.setText(info);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sendOwnMessage(temp);
+                    onImSelectListener.onImSelect(IM_LEFT_5,-1,info);
                 }
             });
             viewholder.mLlLeftList.addView(view);
@@ -399,6 +439,7 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                     viewholder.mTvYes.setSelected(true);
                     viewholder.mLlYes.setSelected(true);
                     // TODO: 2018/9/13 标记已解决
+                    onImQuestionSolveListener.onImQuestionSolve(imModel.getQuestionId(),imModel.getOriginQuestion(),true);
                 }
             }
         });
@@ -412,6 +453,7 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                     viewholder.mTvNo.setSelected(true);
                     viewholder.mLlNo.setSelected(true);
                     // TODO: 2018/9/13 标记未解决
+                    onImQuestionSolveListener.onImQuestionSolve(imModel.getQuestionId(),imModel.getOriginQuestion(),false);
                 }
             }
         });
@@ -436,26 +478,29 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
         viewholder.mGvProv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                sendOwnMessage(mAdapterProv.getDataList()[position]);
+                onImSelectListener.onImSelect(IM_LEFT_7,position,mAdapterProv.getDataList()[position]);
             }
         });
     }
 
     private void handleLeftEighth(ViewHolder holder,ImModel imModel){
         final ViewHolderLeftEighth viewholder = (ViewHolderLeftEighth) holder;
+        viewholder.mTvTip.setText(mContext.getString(R.string.im_choose_course_1));
         viewholder.mIvLogo.setImageResource(R.drawable.icon_im_robot);
+        mAdapterWl = new ImSelectCourseCmAdapter(mContext,imModel.getInfoList());
         viewholder.mGvWl.setAdapter(mAdapterWl);
         adjustGridView(viewholder.mGvWl,mContext.getResources().getDimensionPixelOffset(R.dimen.margin_37),2,mContext.getResources().getDimensionPixelOffset(R.dimen.margin_10),true);
         viewholder.mGvWl.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                sendOwnMessage(mAdapterWl.getDataList()[position]);
+                onImSelectListener.onImSelect(IM_LEFT_8,position,mAdapterWl.getDataList().get(position));
             }
         });
     }
 
     private void handleLeftNinth(ViewHolder holder,ImModel imModel){
         final ViewHolderLeftNinth viewholder = (ViewHolderLeftNinth) holder;
+        viewholder.mTvTip.setText(mContext.getString(R.string.im_choose_course_2));
         viewholder.mIvLogo.setImageResource(R.drawable.icon_im_robot);
         viewholder.mGvZj.setAdapter(mAdapterZj);
         adjustGridView(viewholder.mGvZj,mContext.getResources().getDimensionPixelOffset(R.dimen.margin_37),2,mContext.getResources().getDimensionPixelOffset(R.dimen.margin_10),true);
@@ -473,7 +518,7 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                             mAdapterZj.getSelectMap().get(index).setEnabled(false);
                         }
                         str += mAdapterZj.getItem(position);
-                        sendOwnMessage(str);
+                        onImSelectListener.onImSelect(IM_LEFT_9,position,str);
                         mAdapterZj.getSelectMap().clear();
                     }else{
                         view.setEnabled(true);
@@ -510,6 +555,21 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
                 });
             }
         }
+    }
+
+    private void handleLeftEleventh(ViewHolder holder,ImModel imModel){
+        final ViewHolderLeftEleventh viewholder = (ViewHolderLeftEleventh) holder;
+        viewholder.mTvTip.setText(mContext.getString(R.string.im_choose_batch));
+        viewholder.mIvLogo.setImageResource(R.drawable.icon_im_robot);
+        mAdapterBatch = new ImSelectCourseCmAdapter(mContext,imModel.getInfoList());
+        viewholder.mGvBatch.setAdapter(mAdapterBatch);
+        adjustGridView(viewholder.mGvBatch,mContext.getResources().getDimensionPixelOffset(R.dimen.margin_37),2,mContext.getResources().getDimensionPixelOffset(R.dimen.margin_10),true);
+        viewholder.mGvBatch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onImSelectListener.onImSelect(IM_LEFT_11,position,mAdapterBatch.getDataList().get(position));
+            }
+        });
     }
 
     private void handleRight(ViewHolder holder,ImModel imModel){
@@ -687,11 +747,13 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
 
         ImageView mIvLogo;
         GridView mGvWl;
+        TextView mTvTip;
 
         public ViewHolderLeftEighth(View itemView) {
             super(itemView);
             mIvLogo = (ImageView) itemView.findViewById(R.id.iv_im_logo);
-            mGvWl = (GridView) itemView.findViewById(R.id.gv_im_8_wl);
+            mGvWl = (GridView) itemView.findViewById(R.id.gv_im_8_choose);
+            mTvTip = (TextView) itemView.findViewById(R.id.tv_im_left_8_tip);
         }
     }
 
@@ -699,11 +761,14 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
 
         ImageView mIvLogo;
         GridView mGvZj;
+        TextView mTvTip;
 
         public ViewHolderLeftNinth(View itemView) {
             super(itemView);
             mIvLogo = (ImageView) itemView.findViewById(R.id.iv_im_logo);
-            mGvZj = (GridView) itemView.findViewById(R.id.gv_im_9_zj);
+            mGvZj = (GridView) itemView.findViewById(R.id.gv_im_8_choose);
+            mTvTip = (TextView) itemView.findViewById(R.id.tv_im_left_8_tip);
+
         }
     }
 
@@ -716,6 +781,20 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
             super(itemView);
             mIvLogo = (ImageView) itemView.findViewById(R.id.iv_im_logo);
             mAwlMajor = (AutoWrapLayout) itemView.findViewById(R.id.awl_im_major);
+        }
+    }
+
+    public class ViewHolderLeftEleventh extends ViewHolder{
+
+        ImageView mIvLogo;
+        GridView mGvBatch;
+        TextView mTvTip;
+
+        public ViewHolderLeftEleventh(View itemView) {
+            super(itemView);
+            mIvLogo = (ImageView) itemView.findViewById(R.id.iv_im_logo);
+            mGvBatch = (GridView) itemView.findViewById(R.id.gv_im_8_choose);
+            mTvTip = (TextView) itemView.findViewById(R.id.tv_im_left_8_tip);
         }
     }
 
@@ -784,7 +863,7 @@ public class ImAdapter extends RecyclerView.Adapter<ImAdapter.ViewHolder> {
     }
 
     private void sendOwnMessage(String content){
-        MyClient.getMyClient().getImManager().handleBroadcastMsg(IM_RIGHT_1,content);
+        MyClient.getMyClient().getImManager().handleBroadcastMsg(UrlConstantV2.VALUE.IM_RIGHT_1,content);
     }
 
     private void adjustGridView(GridView gv,int lineHeight,int columnCount,int horizontalSpacing,boolean isHadLine){

@@ -20,7 +20,7 @@ android {
 
         manifestPlaceholders = [
                 JPUSH_PKGNAME : "melon.im",
-                JPUSH_APPKEY : "ec8f3e299ce973c671d12be2", //JPush上注册的包名对应的appkey.
+                JPUSH_APPKEY : "9d9f315b8110b34b58928968", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }

@@ -1,4 +1,4 @@
-package melon.im.base;
+package melon.im;
 
 import android.app.Application;
 import android.content.Context;

@@ -12,7 +12,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 
 import java.io.UnsupportedEncodingException;
 
-public class JsonObjectRequest extends BaseJsonRequest {
+public class MelonJsonObjectRequest extends BaseJsonRequest {
 
     /**
      * Creates a new request.
@@ -22,8 +22,8 @@ public class JsonObjectRequest extends BaseJsonRequest {
      * @param listener Listener to receive the JSON response
      * @param errorListener Error listener, or null to ignore errors.
      */
-    public JsonObjectRequest(int method, String url,
-                             Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+    public MelonJsonObjectRequest(int method, String url,
+                                  Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
         super(method, url, listener,
                 errorListener);
     }

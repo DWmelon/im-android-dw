@@ -3,8 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="7dp"
-    android:paddingBottom="7dp"
+    android:paddingBottom="@dimen/margin_15"
     android:paddingLeft="@dimen/margin_15"
     android:paddingRight="@dimen/margin_15"
     android:gravity="top">
@@ -105,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
-            android:text="@string/im_people_ask"
+            android:text="@string/im_question_similar_3"
             android:textColor="@color/common_sub_title_txt_color"
             android:textSize="13sp"/>
 
